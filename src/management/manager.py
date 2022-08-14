@@ -35,10 +35,6 @@ class Manager:
         with open(f'{self.pwd}/{self.file_page_url}', 'w') as f:
             d = yaml.dump(data, f)
 
-    def get_categories_url(self) -> List[str]:
-        data_category = self.load_content_category()
-        return [url for url in data_category.keys()]
-
     def get_category_url_pages(self, url: str) -> List[str]:
         urls = [url]
         for i in range(2, 1000):
