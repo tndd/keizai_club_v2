@@ -27,6 +27,15 @@ class Manager:
             d = yaml.safe_load(f)
         return d
 
+    def store_content_location(self, data: dict) -> None:
+        with open(f'{self.pwd}/{self.file_location}', 'w') as f:
+            d = yaml.dump(data, f)
+
+    def store_content_page_url(self, data: dict) -> None:
+        with open(f'{self.pwd}/{self.file_page_url}', 'w') as f:
+            d = yaml.dump(data, f)
+        return d
+
     def get_categories_url(self) -> List[str]:
         data_category = self.load_content_category()
         return [url for url in data_category.keys()]
