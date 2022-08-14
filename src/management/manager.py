@@ -39,10 +39,16 @@ class Manager:
         data_category = self.load_content_category()
         return [url for url in data_category.keys()]
 
+    def get_category_url_pages(self, url: str) -> List[str]:
+        urls = [url]
+        for i in range(2, 1000):
+            urls.append(f'{url}/page/{i}')
+        return urls
+
 
 def main() -> None:
     m = Manager()
-    print(m.get_categories_url())
+    print(m.get_category_url_pages('aaa'))
 
 
 if __name__ == '__main__':
