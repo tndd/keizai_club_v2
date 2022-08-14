@@ -34,7 +34,6 @@ class Manager:
     def store_content_page_url(self, data: dict) -> None:
         with open(f'{self.pwd}/{self.file_page_url}', 'w') as f:
             d = yaml.dump(data, f)
-        return d
 
     def get_categories_url(self) -> List[str]:
         data_category = self.load_content_category()
