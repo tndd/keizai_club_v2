@@ -1,0 +1,16 @@
+near_future:
+  url: https://keizaiclub.com/category/%e8%bf%91%e6%9c%aa%e6%9d%a5%e4%ba%88%e6%b8%ac/
+  name: 近未来予測
+  save_to: data/near_future
+wrestling_chat:
+  url: https://keizaiclub.com/category/zatsudan/
+  name: プロレス雑談
+  save_to: data/wrestling_chat
+live_qa:
+  url: https://keizaiclub.com/category/%e3%83%a9%e3%82%a4%e3%83%96qa/
+  name: ライブQ&A
+  save_to: data/live_qa
+podcast:
+  url: https://keizaiclub.com/category/%e3%83%9d%e3%83%83%e3%83%89%e3%82%ad%e3%83%a3%e3%82%b9%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0/
+  name: 世界経済Q&A
+  save_to: data/podcast
