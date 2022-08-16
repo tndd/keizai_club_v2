@@ -66,6 +66,11 @@ class Manager:
         query = self.load_query(QueryGroup.INSERT, 'location')
         self.execute_many(query, params)
 
+    def select_category(self) -> List[tuple]:
+        query = self.load_query(QueryGroup.SELECT, 'category')
+        self.cur.execute(query)
+        return self.cur.fetchall()
+
     def init_db(self) -> None:
         self.create_tables()
         self.insert_category()
@@ -73,9 +78,8 @@ class Manager:
 
 def main() -> None:
     m = Manager()
-    # m.init_db()
-    params = [('1c', '2c', '3c', '4c', '5c', '6c')]
-    m.insert_location(params)
+    l = m.select_category()
+    print(l)
 
 
 if __name__ == '__main__':
