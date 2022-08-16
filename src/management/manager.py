@@ -62,6 +62,10 @@ class Manager:
         query = self.load_query(QueryGroup.INSERT, 'page_url')
         self.execute_many(query, params)
 
+    def insert_location(self, params: List[tuple]) -> None:
+        query = self.load_query(QueryGroup.INSERT, 'location')
+        self.execute_many(query, params)
+
     def init_db(self) -> None:
         self.create_tables()
         self.insert_category()
@@ -71,8 +75,8 @@ class Manager:
 def main() -> None:
     m = Manager()
     # m.init_db()
-    params = [('1a', '2a', '3', '4', '5', '6'), ('1b', '2b', '3', '4', '5', '6')]
-    m.insert_page_url(params)
+    params = [('1c', '2c', '3c', '4c', '5c', '6c')]
+    m.insert_location(params)
 
 
 if __name__ == '__main__':
