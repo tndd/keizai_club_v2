@@ -71,7 +71,6 @@ class Manager:
         self.insert_category()
 
 
-
 def main() -> None:
     m = Manager()
     # m.init_db()
