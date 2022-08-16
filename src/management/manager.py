@@ -62,7 +62,6 @@ class Manager:
         query = self.load_query(QueryGroup.INSERT, 'page_url')
         self.execute_many(query, params)
 
-
     def init_db(self) -> None:
         self.create_tables()
         self.insert_category()
