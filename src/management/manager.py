@@ -49,11 +49,6 @@ class Manager:
         query = self.load_query(QueryGroup.CREATE, 'location')
         self.execute_query(query)
 
-    def create_tables(self) -> None:
-        self.create_category()
-        self.create_page_url()
-        self.create_location()
-
     def insert_category(self) -> None:
         query = self.load_query(QueryGroup.INSERT, 'category')
         self.execute_query(query)
@@ -70,6 +65,11 @@ class Manager:
         query = self.load_query(QueryGroup.SELECT, 'category')
         self.cur.execute(query)
         return self.cur.fetchall()
+
+    def create_tables(self) -> None:
+        self.create_category()
+        self.create_page_url()
+        self.create_location()
 
     def init_db(self) -> None:
         self.create_tables()
