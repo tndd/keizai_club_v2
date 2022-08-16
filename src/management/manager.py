@@ -28,6 +28,10 @@ class Manager:
         self.cur.execute(query)
         self.conn.commit()
 
+    def execute_many(self, query, params: List[str]) -> None:
+        self.cur.executemany(query, params)
+        self.conn.commit()
+
     def execute_queries(self, queries: List[str]) -> None:
         for q in queries:
             self.cur.execute(q)
@@ -53,6 +57,11 @@ class Manager:
     def insert_category(self) -> None:
         query = self.load_query(QueryGroup.INSERT, 'category')
         self.execute_query(query)
+
+    def insert_page_url(self, params: List[str]) -> None:
+        query = self.load_query(QueryGroup.INSERT, 'page_url')
+        self.execute_many(query, params)
+
 
     def init_db(self) -> None:
         self.create_tables()
