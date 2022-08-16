@@ -28,7 +28,7 @@ class Manager:
         self.cur.execute(query)
         self.conn.commit()
 
-    def execute_many(self, query, params: List[str]) -> None:
+    def execute_many(self, query, params: List[tuple]) -> None:
         self.cur.executemany(query, params)
         self.conn.commit()
 
@@ -58,7 +58,7 @@ class Manager:
         query = self.load_query(QueryGroup.INSERT, 'category')
         self.execute_query(query)
 
-    def insert_page_url(self, params: List[str]) -> None:
+    def insert_page_url(self, params: List[tuple]) -> None:
         query = self.load_query(QueryGroup.INSERT, 'page_url')
         self.execute_many(query, params)
 
@@ -70,9 +70,9 @@ class Manager:
 
 def main() -> None:
     m = Manager()
-    m.init_db()
-    # m.insert_category()
-    # print(m.get_category_url_pages('aaa'))
+    # m.init_db()
+    params = [('1a', '2a', '3', '4', '5', '6'), ('1b', '2b', '3', '4', '5', '6')]
+    m.insert_page_url(params)
 
 
 if __name__ == '__main__':

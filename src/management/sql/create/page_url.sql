@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS page_url (
-    `timestamp` INTEGER NOT NULL,
+    `timestamp` TEXT NOT NULL,
     `page_url` TEXT NOT NULL,
     `page_title` TEXT NOT NULL,
     `page_date` TEXT NOT NULL,
