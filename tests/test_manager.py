@@ -15,6 +15,7 @@ def test_init_db() -> None:
     m.cur.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY NAME;")
     print(m.cur.fetchall())
 
+
 def test_select_category() -> None:
     m = get_manager_for_test()
     l = m.select_category()
