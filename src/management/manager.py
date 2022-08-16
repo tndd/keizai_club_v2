@@ -10,6 +10,7 @@ class QueryGroup(Enum):
     INSERT = 'insert'
     SELECT = 'select'
 
+
 @dataclass
 class Manager:
     pwd: str = Path(__file__).resolve().parent
