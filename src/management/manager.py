@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List
 
 import yaml
 
@@ -29,17 +28,16 @@ class Manager:
 
     def store_content_location(self, data: dict) -> None:
         with open(f'{self.pwd}/{self.file_location}', 'w') as f:
-            d = yaml.dump(data, f)
+            yaml.dump(data, f)
 
     def store_content_page_url(self, data: dict) -> None:
         with open(f'{self.pwd}/{self.file_page_url}', 'w') as f:
-            d = yaml.dump(data, f)
+            yaml.dump(data, f)
 
-    def get_category_url_pages(self, url: str) -> List[str]:
-        urls = [url]
-        for i in range(2, 1000):
-            urls.append(f'{url}/page/{i}')
-        return urls
+    def append_content_page_url(self, data: dict, timestamp: str) -> None:
+        d = self.load_content_page_url()
+        d[timestamp] = data
+        self.store_content_page_url(d)
 
 
 def main() -> None:
