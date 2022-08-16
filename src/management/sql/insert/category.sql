@@ -1,4 +1,4 @@
-REPLACE INTO category(
+INSERT OR IGNORE INTO category(
     `url`,
     `name`,
     `name_jp`
