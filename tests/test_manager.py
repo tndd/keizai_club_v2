@@ -58,6 +58,9 @@ def test_insert_select_location() -> None:
         ('test_row_c1', 'c2', 'c3', 'c4', 'c5', 'c6')
     ]
     assert expd_rows == m.select_location()
+    # cleaning rows
+    m.cur.execute("delete from location where content_location like 'test_row_%';")
+    m.conn.commit()
 
 
 def main() -> None:
