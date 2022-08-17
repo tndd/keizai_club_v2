@@ -82,15 +82,6 @@ class Manager:
         self.create_tables()
         self.insert_category()
 
-    def _drop_tables(self) -> None:
-        pattern = r'__test*.db'
-        if not re.match(pattern, self.database):
-            raise Exception(f'This method can call only {pattern} database.')
-        self.cur.execute('drop table if exists category;')
-        self.cur.execute('drop table if exists location;')
-        self.cur.execute('drop table if exists page_url;')
-        self.conn.commit()
-
 
 def main() -> None:
     m = Manager()

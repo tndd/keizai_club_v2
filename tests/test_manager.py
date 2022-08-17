@@ -6,9 +6,12 @@ def get_manager_for_test() -> Manager:
 
 
 def test_init_db() -> None:
-    # prepare
+    # initialize database
     m = get_manager_for_test()
-    m._drop_tables()
+    m.cur.execute('drop table if exists category;')
+    m.cur.execute('drop table if exists location;')
+    m.cur.execute('drop table if exists page_url;')
+    m.conn.commit()
     # test method
     m.init_db()
     # validate table name
@@ -39,8 +42,26 @@ def test_select_category() -> None:
     assert expd_rows_category == m.select_category()
 
 
+def test_insert_select_location() -> None:
+    m = get_manager_for_test()
+    insert_rows = [
+        ('test_row_a1', 'a2', 'a3', 'a4', 'a5', 'a6'),
+        ('test_row_a1', 'a2_', 'a3_', 'a4_', 'a5_', 'a6_'),     # violation primary key
+        ('test_row_a1_', 'a2', 'a3_', 'a4', 'a5', 'a6_'),       # violation unique
+        ('test_row_b1', 'b2', 'b3', 'b4', 'b5', 'b6'),
+        ('test_row_c1', 'c2', 'c3', 'c4', 'c5', 'c6')
+    ]
+    m.insert_location(insert_rows)
+    expd_rows = [
+        ('test_row_a1', 'a2', 'a3', 'a4', 'a5', 'a6'),
+        ('test_row_b1', 'b2', 'b3', 'b4', 'b5', 'b6'),
+        ('test_row_c1', 'c2', 'c3', 'c4', 'c5', 'c6')
+    ]
+    assert expd_rows == m.select_location()
+
+
 def main() -> None:
-    test_select_category()
+    test_insert_select_location()
 
 
 if __name__ == '__main__':
