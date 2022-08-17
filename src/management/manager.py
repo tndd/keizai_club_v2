@@ -68,6 +68,11 @@ class Manager:
         self.cur.execute(query)
         return self.cur.fetchall()
 
+    def select_location(self) -> List[tuple]:
+        query = self.load_query(QueryGroup.SELECT, 'location')
+        self.cur.execute(query)
+        return self.cur.fetchall()
+
     def create_tables(self) -> None:
         self.create_category()
         self.create_page_url()
